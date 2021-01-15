@@ -15,10 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Is this still a thing?
+        // self.clearLaunchScreenCache()
+        
         // Give some time to see the launch screen
         sleep(2)
         
         return true
+    }
+    
+    private func clearLaunchScreenCache() {
+        do {
+            try FileManager.default.removeItem(atPath: NSHomeDirectory()+"/Library/SplashBoard")
+        } catch {
+            print("Failed to delete launch screen cache: \(error)")
+        }
     }
 
     // MARK: UISceneSession Lifecycle
